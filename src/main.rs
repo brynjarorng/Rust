@@ -16,6 +16,19 @@ As the snake "eats" more "apples" he not only grows but also gains speed.
 The game is over when the snake touches itself or if there is no more space on the screen for the snake.
 */
 
+//External crates
+extern crate glutin_window;
+extern crate graphics;
+extern crate opengl_graphics;
+extern crate piston;
+
+//Used dependencies
+use piston::window::WindowSettings;
+use piston::event_loop::*;
+use piston::input::*;
+use glutin_window::GlutinWindow;
+use opengl_graphics::{GlGraphics, OpenGL};
+
 //Eat apple function
 
 //Step function
@@ -27,6 +40,18 @@ fn main() {
         //Direction?
         //Boolean game over?
 
+
+    //Stuff from random youtube video: https://www.youtube.com/watch?v=HCwMb0KslX8
+    let opengl = OpenGL::V3_2;
+
+    //WindoSettings::new{Title T (must be string), Size S (must be array, [width,height])}
+    let mut window = WindowSettings::new(
+        "Snake Game",
+        [512,512]
+    ).opengl(opengl)
+        .exit_on_esc(true)
+        .build()
+        .unwrap();
 
     //Cool screen with "GAME STARTING" + "3" + "2" + "1" "BEGIN"
 
